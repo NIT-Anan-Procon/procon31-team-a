@@ -47,7 +47,7 @@ let inputOperator = value => {
         document.getElementById('d_box').textContent = disp;
         equalFl = 0;
     }
-        if (value != '='&&opeFl==0) {
+        if (value != '=' && opeFl==0) {
             opeFl=1;
             result=disp;
             operator=value;
