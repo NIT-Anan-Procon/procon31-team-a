@@ -4,7 +4,7 @@ let opeFl = 0 //演算子フラグ
 let parCount = 0 //括弧カウント
 let firstFl = 0 //初入力フラグ
 let equalFl = 1 //演算処理フラグ
-let result = 0 //計算結果を入れる変数
+let result = 0 //演算結果を入れる変数
 let disp = '' //ディスプレイに表示する変数
 
 //数値 or 小数点が入力された時
@@ -59,6 +59,7 @@ let inputOperator = value => {
             opeFl = 1;
         } else if (value == '=') { //イコールが入力された時
             result = eval(disp);
+            result = changeWord(result);
             disp = (disp + '=' + result);
             document.getElementById('d_box').textContent = disp;
             console.log('=');
@@ -104,12 +105,13 @@ let inputSign = () => {
 }
 //cが入力された時
 let inputClear = () => {
-    numFl = 0;
+    numFl = 1;
     dotFl = 0;
     opeFl = 0;
+    parCount = 0;
     firstFl = 0;
-    equalFl = 0;
-    result = '';
+    equalFl = 1;
+    result = 0;
     disp = '';
     document.getElementById('d_box').textContent = '0';
     console.log('Clear');
@@ -121,4 +123,12 @@ let inputDelete = () => {
         document.getElementById('d_box').textContent = disp;
         console.log('Delete');
     }
+}
+//演算時
+let changeWord = result => {
+    if (String(result) === 'NaN')
+        return '*文法Error(バグだと思ったらすぐご連絡ください)*';
+    else if (String(result) === 'Infinity')
+        return '*Infinity(仕様です)*'
+    return result;
 }
