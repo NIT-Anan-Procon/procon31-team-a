@@ -1,10 +1,10 @@
-let numFl = 0 //数値フラグ
+let numFl = 1 //数値フラグ
 let dotFl = 0 //小数点フラグ
 let opeFl = 0 //演算子フラグ
-let parFl = 0 //括弧フラグ
+let parCount = 0 //括弧カウント
 let firstFl = 0 //初入力フラグ
-let equalFl = 0 //演算処理フラグ
-let result = '' //計算結果を入れる変数
+let equalFl = 1 //演算処理フラグ
+let result = 0 //計算結果を入れる変数
 let disp = '' //ディスプレイに表示する変数
 
 //数値 or 小数点が入力された時
@@ -19,6 +19,7 @@ let inputNumber = value => {
             document.getElementById('d_box').textContent = disp;
             console.log('0.');
             numFl = 0;
+            opeFl = 0;
             dotFl = 1;
             firstFl = 1;
             result = '0.'
@@ -28,33 +29,33 @@ let inputNumber = value => {
             document.getElementById('d_box').textContent = disp;
             console.log('.');
             numFl = 0;
+            opeFl = 0;
             dotFl = 1;
             result += '.';
         }
-    }
-    else if (firstFl == 1 || value != '0' || value != '00') { //数値が入力された時
+    } else if (firstFl == 1 || value != '00') { //数値が入力された時
         disp += value;
         document.getElementById('d_box').textContent = disp;
         console.log(value);
         numFl = 1;
         opeFl = 0;
-        parFl = 0;
         firstFl = 1;
         result += value;
     }
 }
 //演算子が入力された時
 let inputOperator = value => {
+    if (equalFl == 1) { //演算後の値を利用する時
+        disp = String(result);
+        document.getElementById('d_box').textContent = disp;
+        equalFl = 0;
+    }
     if (numFl == 1 && opeFl == 0) {
-        if (equalFl == 1) { //演算後の値を利用する時
-            disp = result;
-            document.getElementById('d_box').textContent = disp;
-            equalFl = 0;
-        }
         if (value != '=') { //算術演算子が入力された時
             disp += value;
             document.getElementById('d_box').textContent = disp;
             console.log(value);
+            numFl = 0;
             opeFl = 1;
         } else if (value == '=') { //イコールが入力された時
             result = eval(disp);
@@ -62,28 +63,28 @@ let inputOperator = value => {
             document.getElementById('d_box').textContent = disp;
             console.log('=');
             console.log(result);
+            numFl = 1;
             opeFl = 0;
             equalFl = 1;
         }
-        numFl = 0;
         dotFl = 0;
         firstFl = 0;
-        result = '';
+        result = 0;
     }
 }
 //括弧が入力された時
 let inputParenthesis = value => {
-    if (parFl == 0 && equalFl == 0) {
-        if (numFl == 0 && opeFl == 1 && value == '(') {
+    if (equalFl == 0) {
+        if (numFl == 0 && opeFl == 1 && value == '(') { //開き括弧が入力された時
             disp += value;
             document.getElementById('d_box').textContent = disp;
             console.log(value);
-            parFl = 1;
-        } else if (numFl == 1 && opeFl == 0 && value == ')') {
+            parCount++;
+        } else if (numFl == 1 && opeFl == 0 && parCount != 0 && value == ')') { //閉じ括弧が入力された時
             disp += value;
             document.getElementById('d_box').textContent = disp;
             console.log(value);
-            parFl = 1;
+            parCount--;
         }
     }
 }
@@ -106,19 +107,18 @@ let inputClear = () => {
     numFl = 0;
     dotFl = 0;
     opeFl = 0;
-    parFl = 0;
     firstFl = 0;
     equalFl = 0;
     result = '';
     disp = '';
     document.getElementById('d_box').textContent = '0';
-    console.log(Clear);
+    console.log('Clear');
 }
 //←が入力された時
 let inputDelete = () => {
     if (equalFl == 0) {
         disp = disp.slice(0, -1);
         document.getElementById('d_box').textContent = disp;
-        console.log(Delete);
+        console.log('Delete');
     }
 }
