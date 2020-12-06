@@ -1,0 +1,34 @@
+.container {
+    width: 1510px;
+    height: 710px;
+    margin: 5px;
+    border: 2px solid #000000;
+    background: #0f4c75;
+    display: flex;
+    justify-content: space-around;
+}
+
+.result {
+    width: 800px;
+    height: 500px;
+    background: #bbe1fa;
+    position: relative;
+    bottom: 20px;
+}
+
+.right {
+    width: 700px;
+    height: 200px;
+}
+
+.process {
+    width: 700px;
+    height: 50px;
+    background: #bbe1fa;
+}
+
+.button {
+    width: 700px;
+    height: 140px;
+    background: #bbe1fa;
+}
