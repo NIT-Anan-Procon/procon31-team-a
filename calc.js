@@ -145,3 +145,13 @@ let changeWord = result => {
         return '*Infinity(仕様です)*'
     return result;
 }
+var xhr = new XMLHttpRequest();
+//ヘッダーの指定
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.open('POST', 'test.php');
+xhr.onload = function () {
+  console.log(xhr.response);
+};
+//sendメソッドにdataを渡す
+var data = "id=1";
+xhr.send(data);
