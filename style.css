@@ -32,17 +32,29 @@
     height: 530px;
     background: #cfd3ce;
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
 }
 
-.row {
+/*.row {
     display: flex;
     justify-content: space-around;
-}
+} */
 
 button {                            /*ボタンの形を指定*/
+    margin: 10px;
     width: 90px;
     height: 90px;
+    font-size: 3em;
+    border: 2px solid #0f4c75;
     background: #3282b8;
+    display: block;
+}
+
+button.num {                              /*色を変えるボタンを指定*/
+    border: 2px solid #3282b8;
+    background: #bbe1fa;
+}
+
+#addition {
+    height: 190px;
 }
