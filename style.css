@@ -1,0 +1,60 @@
+.container {
+    width: 1510px;
+    height: 710px;
+    border: 2px solid #000000;
+    background: #0f4c75;
+    display: flex;                  /*横並びにする*/
+}
+
+.result {
+    position: relative;             /*基本座標の相対位置を指定*/
+    width: 780px;
+    height: 580px;
+    top: 110px;
+    border: 10px solid #0f4c75;
+    background: #bbe1fa;
+}
+
+.right {
+    width: 710px;
+    height: 710px;
+}
+
+.process {
+    width: 690px;
+    height: 160px;
+    border: 10px solid #3282b8;
+    background: #bbe1fa;
+}
+
+.button {
+    width: 710px;
+    height: 530px;
+    background: #cfd3ce;
+    display: flex;
+    justify-content: space-around;
+}
+
+/*.row {
+    display: flex;
+    justify-content: space-around;
+} */
+
+button {                            /*ボタンの形を指定*/
+    margin: 10px;
+    width: 90px;
+    height: 90px;
+    font-size: 3em;
+    border: 2px solid #0f4c75;
+    background: #3282b8;
+    display: block;
+}
+
+button.num {                              /*色を変えるボタンを指定*/
+    border: 2px solid #3282b8;
+    background: #bbe1fa;
+}
+
+#addition {
+    height: 190px;
+}
