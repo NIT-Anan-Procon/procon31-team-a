@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html lang="ja">
+
+<head>
+ <meta charset="utf-8">
+ <link rel="stylesheet">
+ <title>Calculator</title>
+</head>
+
+<body>
+ <div style="position:absolute; left:250px;" id="wrapper">
+ </div>
+ <div class="calc">
+  <form name="calc_form">
+   <table align=left>
+    <tr>
+    <td id="display" colspan="4"><input type="text" size="12" name='display' value="0"></td>
+    </tr>
+
+    <tr>
+     <td><input class="symbol" type="button" value="c" onclick="inputClear()"></td>
+     <td colspan="3"><input class="symbol" type="button" value="+/-" onclick="inputSign()"></td>
+     <td><input class="symbol" type="button" value="←" onclick="inputDelete()"></td>
+
+    </tr>
+
+    <tr>
+     <td><input type="button" value="7" onclick="inputNumber(7)"></td>
+     <td><input type="button" value="8" onclick="inputNumber(8)"></td>
+     <td><input type="button" value="9" onclick="inputNumber(9)"></td>
+<td><input class="op" type="button" value="(" onclick="inputBrackets('(')"></td>
+<td><input class="op" type="button" value=")" onclick="inputBrackets(')')"></td>
+    </tr>
+
+    <tr>
+     <td><input type="button" value="4" onclick="inputNumber(4)"></td>
+     <td><input type="button" value="5" onclick="inputNumber(5)"></td>
+     <td><input type="button" value="6" onclick="inputNumber(6)"></td>
+<td><input class="op" type="button" value="×" onclick="inputOperator('*')"></td>
+<td><input class="op" type="button" value="÷" onclick="inputOperator('/')"></td>
+    </tr>
+
+    <tr>
+     <td><input type="button" value="1" onclick="inputNumber(1)"></td>
+     <td><input type="button" value="2" onclick="inputNumber(2)"></td>
+     <td><input type="button" value="3" onclick="inputNumber(3)"></td>
+     <td rowspan="2"><input class="op" type="button" style="width: 10%; padding: 12px;" value="+" onclick="inputOperator('+')"></td>
+     <td><input class="op" type="button" value="-" onclick="inputOperator('-')"></td>
+    </tr>
+
+    <tr>
+     <td><input class="zero" type="button" value="0" onclick="inputNumber('0')"></td>
+     <td><input class="zerozero" type="button" value="00" onclick="inputNumber('00')"></td>
+     <td><input type="button" value="." onclick="inputNumber('.')"></td>
+     <td><input class="op" type="button" value="=" onclick="inputOperator('=')"></td>
+    </tr>
+<div style="width: 30%; height: 100px; overflow-y: scroll; background:#eeeeee;" id="log" colspan="4"><input type="text" size="12" name='log' value="">
+</div>
+   </table>
+  </form>
+ </div>
+
+ <script src="C:\procon31_team_a\calc.js"></script>
+</body>
+
+</html>
