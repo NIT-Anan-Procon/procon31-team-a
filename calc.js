@@ -85,7 +85,7 @@ let inputOperator = value => {
     }
 }
 //括弧が入力された時
-let inputParenthesis = value => {
+let inputBrackets = value => {
     if (equalFl == 0) {
         if ((numFl == 0 && opeFl == 1 && value == '(') || relFl == 1) { //開き括弧が入力された時
             disp += value;
