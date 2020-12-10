@@ -73,7 +73,7 @@ let inputOperator = value => {
             result = changeWord(result);
             disp = (disp + '=' + result);
             document.getElementById('display').textContent = disp;
-            log += disp + '\n';
+            log += disp + '<br>';
             document.getElementById('log').textContent = log;
             console.log('=');
             console.log(result);
