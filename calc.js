@@ -77,6 +77,7 @@ let inputOperator = value => {
             document.getElementById('log').textContent = log;
             console.log('=');
             console.log(result);
+            console.log(log);
             numFl = 1;
             opeFl = 0;
             equalFl = 1;
