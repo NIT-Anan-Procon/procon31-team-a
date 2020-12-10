@@ -14,12 +14,13 @@
   <form name="calc_form">
    <table align=left>
     <tr>
-    <td id="display" colspan="4"><input type="text" size="12" name='display' value="0"></td>
+    <td id="formula" colspan="4"><input type="text" size="12" name='display' value=""></td>
+    <td id="result" colspan="4"><input type="text" size="12" name='display' value=""></td>
+    <td id="error" colspan="4"><input type="text" size="12" name='display' value=""></td>
     </tr>
 
     <tr>
-     <td><input class="symbol" type="button" value="c" onclick="inputClear()"></td>
-     <td colspan="3"><input class="symbol" type="button" value="+/-" onclick="inputSign()"></td>
+     <td colspan="4"><input class="symbol" type="button" value="c" onclick="inputClear()"></td>
      <td><input class="symbol" type="button" value="←" onclick="inputDelete()"></td>
 
     </tr>
