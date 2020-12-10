@@ -8,15 +8,15 @@
     </head>
     <body>
         <div class="container">
-            <div class="result" id="log"></div>      <!--計算結果を出力する欄・画面左側-->
+            <div class="result"><p id="log"></p></div>      <!--計算結果を出力する欄・画面左側-->
             <div class="right">                           <!--画面右側-->
-                <div class="process" id="display"></div>     <!--計算過程を出力する欄-->
+                <div class="process"><p id="display"></p></div>     <!--計算過程を出力する欄-->
                 <div class="button">            <!--ボタンを配置する欄-->
                     <div class="row">           <!--1列毎にボタン配置を調整-->
                         <button type="button" id="clear" onclick="inputClear()">C</button>                 <!--計算過程を全て削除する-->
-                        <button type="button" class="num" id="seven" onclick="inputNumber(7)">7</button>             <!--7のボタン--> 
+                        <button type="button" class="num" id="seven" onclick="inputNumber(7)">7</button>             <!--7のボタン-->
                         <button type="button" class="num" id="four" onclick="inputNumber(4)">4</button>              <!--4のボタン-->
-                        <button type="button" class="num" id="one" onclick="inputNumber(1)">1</button>               <!--1のボタン--> 
+                        <button type="button" class="num" id="one" onclick="inputNumber(1)">1</button>               <!--1のボタン-->
                         <button type="button" class="num" id="zero" onclick="inputNumber('0')">0</button>             <!--0のボタン-->
                     </div>
                     <div class="row">
@@ -32,7 +32,7 @@
                         <button type="button" class="num" id="six" onclick="inputNumber(6)">6</button>               <!--6のボタン-->
                         <button type="button" class="num" id="three" onclick="inputNumber(3)">3</button>             <!--3のボタン-->
                         <button type="button" class="num" id="decimal_point" onclick="inputNumber('.')">.</button>                     <!--小数点のボタン-->
-                    </div> 
+                    </div>
                     <div class="row">
                         <button type="button" id="empty"></button>
                         <button type="button" id="brackets_start" onclick="inputBrackets('(')">(</button>                   <!--括弧を開く-->
