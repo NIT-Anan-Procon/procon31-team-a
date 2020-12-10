@@ -35,11 +35,6 @@
     justify-content: space-around;
 }
 
-/*.row {
-    display: flex;
-    justify-content: space-around;
-} */
-
 button {                            /*ボタンの形を指定*/
     margin: 10px;
     width: 90px;
@@ -57,4 +52,9 @@ button.num {                              /*色を変えるボタンを指定*/
 
 #addition {
     height: 190px;
+}
+
+#equal {
+    background: #0f4c75;
+    color: #ffffff;
 }
