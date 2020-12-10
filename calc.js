@@ -8,6 +8,7 @@ let equalFl = 1 //演算処理フラグ
 let result = 0 //演算結果を入れる変数
 let disp = '' //ディスプレイに表示する変数
 let relFl = 0 //文法解放フラグ
+let log = '' //計算履歴
 
 //数値 or 小数点が入力された時
 let inputNumber = value => {
@@ -72,7 +73,8 @@ let inputOperator = value => {
             result = changeWord(result);
             disp = (disp + '=' + result);
             document.getElementById('display').textContent = disp;
-            document.getElementById('log').textContent += disp+' ';
+            log += disp + '\n';
+            document.getElementById('log').textContent = log;
             console.log('=');
             console.log(result);
             numFl = 1;
