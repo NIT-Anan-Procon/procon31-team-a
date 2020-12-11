@@ -6,6 +6,7 @@ let disp = '' //ディスプレイに表示する変数
 let relFl = 0 //文法解放フラグ
 let log = '' //計算履歴
 let textarea = '' //テキストエリア
+let end = ''
 
 //数値 or 小数点が入力された時
 let inputNumber = value => {
@@ -19,10 +20,13 @@ let inputNumber = value => {
         document.getElementById('formula').textContent = disp;
         console.log('.');
         dotFl = 1;
+        length();
     } else if (value !== '.') { //数値が入力された時
         disp += value;
+        end = value;
         document.getElementById('formula').textContent = disp;
         console.log(value);
+        length();
     }
 }
 //演算子が入力された時
@@ -36,6 +40,7 @@ let inputOperator = value => {
         document.getElementById('formula').textContent = disp;
         console.log(result);
         equalFl = 0;
+        length();
     }
     if (value !== '=') { //算術演算子が入力された時
         disp += value;
@@ -73,11 +78,13 @@ let inputBrackets = value => {
         document.getElementById('formula').textContent = disp;
         console.log(value);
         parCount++;
+        length();
     } else if (parCount > 0) { //閉じ括弧が入力された時
         disp += ')';
         document.getElementById('formula').textContent = disp;
         console.log(value);
         parCount--;
+        length();
     }
 }
 //cが入力された時
@@ -97,11 +104,24 @@ let inputClear = () => {
 let inputDelete = () => {
     document.getElementById('error').textContent = '';
     if (equalFl == 0) {
-        disp = disp.slice(0, -1);
+        if (end === '00') {
+            disp = disp.slice(0, disp.length - 2);
+            end = '';
+        } else
+            disp = disp.slice(0, -1);
         document.getElementById('formula').textContent = disp;
         console.log('Delete');
         relFl = 1;
         if (disp.length == 0)
             inputClear();
+    }
+}
+//文字数制限
+let length = () => {
+    if (disp.length > 82) {
+        inputDelete();
+        document.getElementById('error').textContent = '* 文字数オーバー *';
+        console.log('* 文字数オーバー *')
+        console.error(e.message);
     }
 }
