@@ -8,9 +8,12 @@
     </head>
     <body>
         <div class="container">
-            <div class="result"><textarea id="log"></textarea></div>      <!--計算結果を出力する欄・画面左側-->
+            <div class="all-result"><textarea id="log"></textarea></div>      <!--全ての計算結果を出力する欄・画面左側-->
             <div class="right">                           <!--画面右側-->
-                <div class="process"><p id="display"></p></div>     <!--計算過程を出力する欄-->
+                <div class="process">           <!--計算過程と結果を出力する欄-->
+                    <p id="display"></p>        <!--計算過程-->
+                    <p id="pri-result"></p>     <!--結果-->
+                </div>
                 <div class="button">            <!--ボタンを配置する欄-->
                     <div class="row">           <!--1列毎にボタン配置を調整-->
                         <button type="button" id="clear" onclick="inputClear()">C</button>                 <!--計算過程を全て削除する-->
