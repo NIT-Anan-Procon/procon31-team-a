@@ -46,7 +46,7 @@ let inputOperator = value => {
         try {
             result = eval(disp);
             document.getElementById('formula').textContent = disp;
-            document.getElementById('result').textContent = result;
+            document.getElementById('pri-result').textContent = result;
             log += disp + '=' + result + '\n';
             textarea = document.getElementById('log');
             textarea.value = log;
@@ -89,7 +89,7 @@ let inputClear = () => {
     disp = '';
     relFl = 0;
     document.getElementById('formula').textContent = '';
-    document.getElementById('result').textContent = '';
+    document.getElementById('pri-result').textContent = '';
     document.getElementById('error').textContent = '';
     console.log('Clear');
 }
