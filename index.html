@@ -11,7 +11,7 @@
             <div class="all-result"><textarea id="log"></textarea></div>      <!--全ての計算結果を出力する欄・画面左側-->
             <div class="right">                           <!--画面右側-->
                 <div class="process">           <!--計算過程と結果を出力する欄-->
-                    <p id="display"></p>        <!--計算過程-->
+                    <p id="formula"></p>        <!--計算過程-->
                     <p id="pri-result"></p>     <!--結果-->
                 </div>
                 <div class="button">            <!--ボタンを配置する欄-->
@@ -23,7 +23,7 @@
                         <button type="button" class="num" id="zero" onclick="inputNumber('0')">0</button>             <!--0のボタン-->
                     </div>
                     <div class="row">
-                        <button type="button" id="signChange" onclick="inputSign()">+/-</button>          <!--符号を反転させる-->
+                        <button type="button" id="empty"></button>          <!--何もしない-->
                         <button type="button" class="num" id="eight" onclick="inputNumber(8)">8</button>             <!--8のボタン-->
                         <button type="button" class="num" id="five" onclick="inputNumber(5)">5</button>              <!--5のボタン-->
                         <button type="button" class="num" id="two" onclick="inputNumber(2)">2</button>               <!--2のボタン-->
@@ -52,5 +52,6 @@
                 </div>
             </div>
         </div>
+        <p id="error"></p>          <!--文法エラーを表示-->
     </body>
 </html>

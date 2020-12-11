@@ -64,7 +64,7 @@ button.num {                              /*色を変えるボタンを指定*/
     font-size: 30pt;
 }
 
-#display {
+#formula {
     margin: 0;
     width: 710px;
     height: 80px;
@@ -86,4 +86,12 @@ button.num {                              /*色を変えるボタンを指定*/
 #equal {
     background: #0f4c75;
     color: #ffffff;
+}
+
+#error {
+    margin: 0;
+    width: 1000px;
+    height: 100px;
+    font-size: 30px;
+    color: #ff0000;
 }
