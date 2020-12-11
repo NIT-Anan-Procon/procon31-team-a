@@ -19,6 +19,7 @@
     /* position: relative;             基本座標の相対位置を指定 */
     width: 760px;
     height: 560px;
+    font-size: 30pt;
     top: 120px;
     border: 10px solid #0f4c75;
     background: #bbe1fa;
@@ -49,7 +50,7 @@ button {                            /*ボタンの形を指定*/
     margin: 10px;
     width: 90px;
     height: 90px;
-    font-size: 3em;
+    font-size: 40pt;
     border: 2px solid #0f4c75;
     background: #3282b8;
     display: block;
@@ -58,10 +59,6 @@ button {                            /*ボタンの形を指定*/
 button.num {                              /*色を変えるボタンを指定*/
     border: 2px solid #3282b8;
     background: #bbe1fa;
-}
-
-#log {
-    font-size: 30pt;
 }
 
 #formula {
