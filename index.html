@@ -50,24 +50,7 @@
                         <button type="button" id="subtraction" onclick="inputOperator('-')">-</button>               <!--減算を行う-->
                         <button type="button" id="equal" onclick="inputOperator('=')">=</button>                     <!--イコールボタン-->
                         <script type="text/javascript">
-                            $("#equal").on('click', function () { //演算した時
-                                $.ajax({
-                                    type: "POST",
-                                    url: "test.php",
-                                    data: { disp: disp + "=" + result + "\n" },
-                                    dataType: "json",
-                                })
-                                    //通信に成功したとき
-                                    .done(function (data) {
-                                        console.log("success");
-                                    })
-                                    //通信に失敗したとき
-                                    .fail(function (data) {
-                                        console.log("error");
-                                    });
-                            });
-                            $("button").on('click', function () { //何かしらのボタンを押したとき
-                                $.ajax({
+                            $.ajax({
                                     type: "POST",
                                     url: "test.php",
                                     data: { disp: '' },
@@ -76,11 +59,22 @@
                                     //通信に成功したとき
                                     .done(function (data) {
                                         console.log("success");
-                                        if (first) {
-                                            textarea = document.getElementById('log');
-                                            textarea.value = data;
-                                            first = false;
-                                        }
+                                        textarea = document.getElementById('log');
+                                        textarea.value = data;
+                                    })
+                                    //通信に失敗したとき
+                                    .fail(function (data) {
+                                        console.log("error");
+                                    });
+                            $("#equal").on('click', function () { //演算した時
+                                $.ajax({
+                                    type: "POST",
+                                    url: "test.php",
+                                    data: { disp: disp + "=" + result + "\n" },
+                                })
+                                    //通信に成功したとき
+                                    .done(function (data) {
+                                        console.log("success");
                                     })
                                     //通信に失敗したとき
                                     .fail(function (data) {

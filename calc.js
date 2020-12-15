@@ -6,7 +6,6 @@ let disp = '' //ディスプレイに表示する変数
 let relFl = 0 //文法解放フラグ
 let textarea = '' //テキストエリア
 let end = ''
-let first = true
 let log = ''
 
 //数値 or 小数点が入力された時
