@@ -1,91 +1,129 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Web電卓</title>
-        <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" src="jquery-3.5.1.js"></script>
-        <script type="text/javascript" src="calc.js"></script>
-    </head>
-    <body>
-        <div class="container">                 <!--Web電卓の入れ物-->
-            <div class="all-result"><textarea id="log"></textarea></div>      <!--全ての計算結果を出力する欄・画面左側-->
-            <div class="right">                 <!--画面右側-->
-                <div class="process">           <!--計算過程と結果を出力する欄-->
-                    <p id="formula"></p>        <!--計算過程-->
-                    <p id="pri-result"></p>     <!--結果-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Web電卓</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="calc.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--Web電卓の入れ物-->
+        <div class="all-result"><textarea id="log"></textarea></div>
+        <!--全ての計算結果を出力する欄・画面左側-->
+        <div class="right">
+            <!--画面右側-->
+            <div class="process">
+                <!--計算過程と結果を出力する欄-->
+                <p id="formula"></p>
+                <!--計算過程-->
+                <p id="pri-result"></p>
+                <!--結果-->
+            </div>
+            <div class="button">
+                <!--ボタンを配置する欄-->
+                <div class="row">
+                    <!--1列毎にボタン配置を調整-->
+                    <button type="button" id="clear" onclick="inputClear()">C</button>
+                    <!--計算過程を全て削除する-->
+                    <button type="button" class="num" id="seven" onclick="inputNumber(7)">7</button>
+                    <!--7のボタン-->
+                    <button type="button" class="num" id="four" onclick="inputNumber(4)">4</button>
+                    <!--4のボタン-->
+                    <button type="button" class="num" id="one" onclick="inputNumber(1)">1</button>
+                    <!--1のボタン-->
+                    <button type="button" class="num" id="zero" onclick="inputNumber('0')">0</button>
+                    <!--0のボタン-->
                 </div>
-                <div class="button">            <!--ボタンを配置する欄-->
-                    <div class="row">           <!--1列毎にボタン配置を調整-->
-                        <button type="button" id="clear" onclick="inputClear()">C</button>                           <!--計算過程を全て削除する-->
-                        <button type="button" class="num" id="seven" onclick="inputNumber(7)">7</button>             <!--7のボタン-->
-                        <button type="button" class="num" id="four" onclick="inputNumber(4)">4</button>              <!--4のボタン-->
-                        <button type="button" class="num" id="one" onclick="inputNumber(1)">1</button>               <!--1のボタン-->
-                        <button type="button" class="num" id="zero" onclick="inputNumber('0')">0</button>            <!--0のボタン-->
-                    </div>
-                    <div class="row">
-                        <button type="button" id="empty"></button>          <!--何もしない-->
-                        <button type="button" class="num" id="eight" onclick="inputNumber(8)">8</button>             <!--8のボタン-->
-                        <button type="button" class="num" id="five" onclick="inputNumber(5)">5</button>              <!--5のボタン-->
-                        <button type="button" class="num" id="two" onclick="inputNumber(2)">2</button>               <!--2のボタン-->
-                        <button type="button" class="num" id="zerozero" onclick="inputNumber('00')">00</button>      <!--00のボタン-->
-                    </div>
-                    <div class="row">
-                        <button type="button" id="empty"></button>          <!--何もしない-->
-                        <button type="button" class="num" id="nine" onclick="inputNumber(9)">9</button>              <!--9のボタン-->
-                        <button type="button" class="num" id="six" onclick="inputNumber(6)">6</button>               <!--6のボタン-->
-                        <button type="button" class="num" id="three" onclick="inputNumber(3)">3</button>             <!--3のボタン-->
-                        <button type="button" class="num" id="decimal_point" onclick="inputNumber('.')">.</button>   <!--小数点のボタン-->
-                    </div>
-                    <div class="row">
-                        <button type="button" id="empty"></button>          <!--何もしない-->
-                        <button type="button" id="brackets_start" onclick="inputBrackets('(')">(</button>            <!--括弧を開く-->
-                        <button type="button" id="multiplication" onclick="inputOperator('*')">×</button>            <!--乗算を行う-->
-                        <button type="button" id="addition" onclick="inputOperator('+')">+</button>                  <!--加算を行う-->
-                    </div>
-                    <div class="row">
-                        <button type="button" id="delete" onclick="inputDelete()">←</button>                         <!--計算過程の操作を1つ戻す-->
-                        <button type="button" id="brackets_end" onclick="inputBrackets(')')">)</button>              <!--括弧を閉じる-->
-                        <button type="button" id="division" onclick="inputOperator('/')">÷</button>                  <!--除算を行う-->
-                        <button type="button" id="subtraction" onclick="inputOperator('-')">-</button>               <!--減算を行う-->
-                        <button type="button" id="equal" onclick="inputOperator('=')">=</button>                     <!--イコールボタン-->
-                        <script type="text/javascript">
-                            $.ajax({
-                                    type: "POST",
-                                    url: "test.php",
-                                    data: { disp: '' },
-                                    dataType: "json",
-                                })
-                                    //通信に成功したとき
-                                    .done(function (data) {
-                                        console.log("success");
-                                        textarea = document.getElementById('log');
-                                        textarea.value = data;
-                                    })
-                                    //通信に失敗したとき
-                                    .fail(function (data) {
-                                        console.log("error");
-                                    });
-                            $("#equal").on('click', function () { //演算した時
-                                $.ajax({
-                                    type: "POST",
-                                    url: "test.php",
-                                    data: { disp: disp + "=" + result + "\n" },
-                                })
-                                    //通信に成功したとき
-                                    .done(function (data) {
-                                        console.log("success");
-                                    })
-                                    //通信に失敗したとき
-                                    .fail(function (data) {
-                                        console.log("error");
-                                    });
+                <div class="row">
+                    <button type="button" id="empty"></button>
+                    <!--何もしない-->
+                    <button type="button" class="num" id="eight" onclick="inputNumber(8)">8</button>
+                    <!--8のボタン-->
+                    <button type="button" class="num" id="five" onclick="inputNumber(5)">5</button>
+                    <!--5のボタン-->
+                    <button type="button" class="num" id="two" onclick="inputNumber(2)">2</button>
+                    <!--2のボタン-->
+                    <button type="button" class="num" id="zerozero" onclick="inputNumber('00')">00</button>
+                    <!--00のボタン-->
+                </div>
+                <div class="row">
+                    <button type="button" id="empty"></button>
+                    <!--何もしない-->
+                    <button type="button" class="num" id="nine" onclick="inputNumber(9)">9</button>
+                    <!--9のボタン-->
+                    <button type="button" class="num" id="six" onclick="inputNumber(6)">6</button>
+                    <!--6のボタン-->
+                    <button type="button" class="num" id="three" onclick="inputNumber(3)">3</button>
+                    <!--3のボタン-->
+                    <button type="button" class="num" id="decimal_point" onclick="inputNumber('.')">.</button>
+                    <!--小数点のボタン-->
+                </div>
+                <div class="row">
+                    <button type="button" id="empty"></button>
+                    <!--何もしない-->
+                    <button type="button" id="brackets_start" onclick="inputBrackets('(')">(</button>
+                    <!--括弧を開く-->
+                    <button type="button" id="multiplication" onclick="inputOperator('*')">×</button>
+                    <!--乗算を行う-->
+                    <button type="button" id="addition" onclick="inputOperator('+')">+</button>
+                    <!--加算を行う-->
+                </div>
+                <div class="row">
+                    <button type="button" id="delete" onclick="inputDelete()">←</button>
+                    <!--計算過程の操作を1つ戻す-->
+                    <button type="button" id="brackets_end" onclick="inputBrackets(')')">)</button>
+                    <!--括弧を閉じる-->
+                    <button type="button" id="division" onclick="inputOperator('/')">÷</button>
+                    <!--除算を行う-->
+                    <button type="button" id="subtraction" onclick="inputOperator('-')">-</button>
+                    <!--減算を行う-->
+                    <button type="button" id="equal" onclick="inputOperator('=')">=</button>
+                    <!--イコールボタン-->
+                    <script type="text/javascript">
+                        $.ajax({
+                            type: "POST",
+                            url: "DeliveryFormula_cp.php",
+                            data: { formula: '' },
+                            dataType: "json",
+                        })
+                            //通信に成功したとき
+                            .done(function (data) {
+                                console.log("success");
+                                for (let i = 0; i < data.length; i++) {
+                                    textarea = document.getElementById('log');
+                                    textarea.value += data[i] + "\n";
+                                }
+                            })
+                            //通信に失敗したとき
+                            .fail(function (data) {
+                                console.log("error");
                             });
-                        </script>
-                    </div>
+                        $("#equal").on('click', function () { //演算した時
+                            $.ajax({
+                                type: "POST",
+                                url: "DeliveryFormula_cp.php",
+                                data: { formula: disp + "=" + result },
+                            })
+                                //通信に成功したとき
+                                .done(function (data) {
+                                    console.log("success");
+                                })
+                                //通信に失敗したとき
+                                .fail(function (data) {
+                                    console.log("error");
+                                });
+                        });
+                    </script>
                 </div>
             </div>
         </div>
-        <p id="error"></p>          <!--文法エラーを表示-->
-    </body>
+    </div>
+    <p id="error"></p>
+    <!--文法エラーを表示-->
+</body>
+
 </html>

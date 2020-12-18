@@ -5,8 +5,7 @@ let result = '' //演算結果を入れる変数
 let disp = '' //ディスプレイに表示する変数
 let relFl = 0 //文法解放フラグ
 let textarea = '' //テキストエリア
-let end = ''
-let log = ''
+let end = '' //最後に入力した値を入れる変数
 
 //数値 or 小数点が入力された時
 let inputNumber = value => {
@@ -54,7 +53,6 @@ let inputOperator = value => {
             document.getElementById('pri-result').textContent = result;
             console.log('=');
             console.log(result);
-            log += disp + '=' + result + '\n';
             textarea = document.getElementById('log');
             textarea.value += disp + '=' + result + '\n';
             console.log('log ← "' + disp + '=' + result + '"');
