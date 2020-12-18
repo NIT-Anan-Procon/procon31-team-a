@@ -40,8 +40,9 @@
 
         //全データのインデックス-1
         while($row=mysqli_fetch_array($result)){
-            $replace=$row['index'];
-            $minus_index="REPLACE INTO formula (index,formula) VALUES ($replace-1,$formula)";
+            $replace_index=$row['index'];
+            $replace_formula=$row['formula'];
+            $minus_index="REPLACE INTO formula (index,formula) VALUES ($replace_index-1,$replace_formula)";
         }
     }
 
