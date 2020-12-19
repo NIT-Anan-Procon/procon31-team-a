@@ -2,7 +2,7 @@
     //変数定義
     $formula=$_POST['formula'];
     $now_index=0;
-    $send_formula;
+    $send_formula=[];
     $num=0;
 
     //mysqlに接続
@@ -32,12 +32,14 @@
     }
 
     //データの転送
-    foreach($send_formula as $value){
-        echo $value."\n";
+    if($send_formula != null){
+        foreach($send_formula as $value){
+            echo $value."\n";
+        }
     }
 
     //データの追加
-    if($formula){
+    if($formula && !($formula=='=undefined')){
         $data="INSERT INTO formula (`index`,`formula`) VALUES ('$now_index'+1,'$formula')";
         $add=mysqli_query($link,$data);
         if(!$add){
@@ -47,7 +49,6 @@
     }
 
     //500件過ぎたらデータの削除
-    echo $now_index;
     if($now_index+1>500){
         $delete="DELETE FROM formula WHERE `index`=1";
         $delete_result=mysqli_query($link,$delete);
