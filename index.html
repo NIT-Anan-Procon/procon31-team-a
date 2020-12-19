@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <!--Web電卓の入れ物-->
-        <div class="all-result"><textarea id="log"></textarea></div>
+        <div class="all-result"><textarea id="log" maxlength="0"></textarea></div>
         <!--全ての計算結果を出力する欄・画面左側-->
         <div class="right">
             <!--画面右側-->
@@ -94,7 +94,7 @@
                             .done(function (data) {
                                 console.log("success");
                                 textarea = document.getElementById('log');
-                                textarea.value += data; 
+                                textarea.value += data;
                             })
                             //通信に失敗したとき
                             .fail(function (data) {
