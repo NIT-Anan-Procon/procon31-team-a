@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Web電卓</title>
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="calc.js"></script>
 </head>
 
@@ -85,37 +85,36 @@
                     <!--イコールボタン-->
                     <script type="text/javascript">
                         $.ajax({
-                            type: "POST",
-                            url: "DeliveryFormula_cp.php",
-                            data: { formula: '' },
-                            dataType: "json",
+                            type: 'POST',
+                            url: "./DeliveryFormula.php",
+                            data: {formula: ""},
+                            dataType: "html",
                         })
                             //通信に成功したとき
                             .done(function (data) {
                                 console.log("success");
-                                for (let i = 0; i < data.length; i++) {
-                                    textarea = document.getElementById('log');
-                                    textarea.value += data[i] + "\n";
-                                }
+                                textarea = document.getElementById('log');
+                                textarea.value += data; 
+                            })
+                            //通信に失敗したとき
+                            .fail(function (data) {
+                                console.log("error");
+                                alert("error");
+                            });
+                        $("#equal").on('click', function () { //演算した時
+                            $.ajax({
+                                type: "POST",
+                                url: "./DeliveryFormula.php",
+                                data: { formula: disp + "=" + result },
+                            })
+                            //通信に成功したとき
+                            .done(function (data) {
+                                console.log("success");
                             })
                             //通信に失敗したとき
                             .fail(function (data) {
                                 console.log("error");
                             });
-                        $("#equal").on('click', function () { //演算した時
-                            $.ajax({
-                                type: "POST",
-                                url: "DeliveryFormula_cp.php",
-                                data: { formula: disp + "=" + result },
-                            })
-                                //通信に成功したとき
-                                .done(function (data) {
-                                    console.log("success");
-                                })
-                                //通信に失敗したとき
-                                .fail(function (data) {
-                                    console.log("error");
-                                });
                         });
                     </script>
                 </div>
