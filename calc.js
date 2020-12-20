@@ -46,7 +46,7 @@ let inputOperator = value => {
         document.getElementById('formula').textContent = disp;
         console.log(value);
         dotFl = 0;
-    } else { //イコールが入力された時
+    } else if (disp !== '') { //イコールが入力された時
         try {
             result = eval(disp);
             document.getElementById('formula').textContent = disp;
